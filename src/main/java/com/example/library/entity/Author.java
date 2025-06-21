@@ -21,7 +21,7 @@ public class Author {
     private String name;
 
     @Column(length = 1000)
-    private String biography;
+    private String description;
 
     @ManyToMany(mappedBy = "authors")
     @JsonBackReference

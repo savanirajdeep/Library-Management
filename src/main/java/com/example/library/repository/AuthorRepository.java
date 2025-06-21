@@ -18,7 +18,7 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
     Page<Author> findByNameContainingIgnoreCase(String name, Pageable pageable);
     
     @Query("SELECT a FROM Author a WHERE LOWER(a.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +
-           "OR LOWER(a.biography) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
+           "OR LOWER(a.description) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     Page<Author> searchAuthors(@Param("searchTerm") String searchTerm, Pageable pageable);
     
     boolean existsByName(String name);

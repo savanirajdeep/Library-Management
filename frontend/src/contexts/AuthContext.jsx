@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = sessionStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -24,8 +24,8 @@ export const AuthProvider = ({ children }) => {
       role: response.role
     };
     console.log('User data:', userData);
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('user', JSON.stringify(userData));
+    sessionStorage.setItem('token', response.token);
+    sessionStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
     return response;
   };
@@ -38,8 +38,8 @@ export const AuthProvider = ({ children }) => {
       email: response.email,
       role: response.role
     };
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('token', response.token);
+    sessionStorage.setItem('user', JSON.stringify(user));
     setUser(user);
     return response;
   };

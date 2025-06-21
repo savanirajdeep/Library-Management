@@ -64,6 +64,11 @@ public class DataInitializer {
         Genre mystery = createGenreIfNotExists("Mystery", "Mystery and detective fiction");
         Genre scifi = createGenreIfNotExists("Science Fiction", "Science fiction and fantasy");
         Genre romance = createGenreIfNotExists("Romance", "Romance novels and love stories");
+        Genre historicalFiction = createGenreIfNotExists("Historical Fiction", "Fiction set in a particular historical period");
+        Genre thriller = createGenreIfNotExists("Thriller", "Suspenseful fiction with fast-paced plots");
+        Genre horror = createGenreIfNotExists("Horror", "Fiction designed to evoke fear");
+        Genre fantasy = createGenreIfNotExists("Fantasy", "Fantasy and magical fiction");
+        
 
         // Create sample authors if they don't exist
         Author author1 = createAuthorIfNotExists("J.K. Rowling", "British author best known for the Harry Potter series");
@@ -74,6 +79,15 @@ public class DataInitializer {
         Author author6 = createAuthorIfNotExists("George Orwell", "English novelist, essayist, journalist and critic");
         Author author7 = createAuthorIfNotExists("F. Scott Fitzgerald", "American novelist and short story writer");
         Author author8 = createAuthorIfNotExists("Herman Melville", "American novelist, short story writer, and poet");
+        Author author9 = createAuthorIfNotExists("Leo Tolstoy", "Russian writer known for War and Peace");
+        Author author10 = createAuthorIfNotExists("Stephen King", "American author of horror, supernatural fiction, and fantasy");
+        Author author11 = createAuthorIfNotExists("Charles Dickens", "English novelist and social critic");
+        Author author12 = createAuthorIfNotExists("Mark Twain", "American writer and humorist best known for The Adventures of Huckleberry Finn");
+        Author author13 = createAuthorIfNotExists("Mary Shelley", "English novelist known for writing Frankenstein");
+        Author author14 = createAuthorIfNotExists("Kurt Vonnegut", "American author known for his satirical novels");
+        Author author15 = createAuthorIfNotExists("Haruki Murakami", "Japanese writer known for surreal novels blending reality and fantasy");
+        Author author16 = createAuthorIfNotExists("George R.R. Martin", "American novelist known for A Song of Ice and Fire series");
+
 
         // Create sample books if they don't exist
         createBookIfNotExists("Harry Potter and the Philosopher's Stone", 
@@ -178,8 +192,65 @@ public class DataInitializer {
             "An epic high-fantasy novel",
             "9780618640157",
             fiction,
-            Set.of(author5),
+            Set.of(author5),    
             "the_lord_of_the_rings.jpg");
+        
+            createBookIfNotExists("War and Peace", 
+            "An epic historical novel about Russian society during the Napoleonic wars", 
+            "9780140447934", 
+            historicalFiction, 
+            Set.of(author9),
+            "war_and_peace.jpg");
+        
+        createBookIfNotExists("The Shining", 
+            "A horror novel about a family staying at an isolated hotel", 
+            "9780307743657", 
+            horror, 
+            Set.of(author10),
+            "the_shining.jpg");
+        
+        createBookIfNotExists("A Tale of Two Cities", 
+            "A novel set during the French Revolution and the Reign of Terror", 
+            "9781853260391", 
+            historicalFiction, 
+            Set.of(author11),
+            "a_tale_of_two_cities.jpg");
+        
+        createBookIfNotExists("The Adventures of Huckleberry Finn", 
+            "A story about the adventures of a boy and a runaway slave on the Mississippi River", 
+            "9780142437179", 
+            thriller, 
+            Set.of(author12),
+            "huckleberry_finn.jpg");
+        
+        createBookIfNotExists("Frankenstein", 
+            "A novel about a scientist who creates a monstrous creature", 
+            "9780141439471", 
+            horror, 
+            Set.of(author13),
+            "frankenstein.jpg");
+        
+        createBookIfNotExists("Slaughterhouse-Five", 
+            "A novel about the bombing of Dresden in WWII and time travel", 
+            "9780440180296", 
+            scifi, 
+            Set.of(author14),
+            "slaughterhouse_five.jpg");
+        
+        createBookIfNotExists("Norwegian Wood", 
+            "A coming-of-age novel exploring love, loss, and mental illness", 
+            "9780375704024", 
+            romance, 
+            Set.of(author15),
+            "norwegian_wood.jpg");
+        
+        createBookIfNotExists("A Game of Thrones", 
+            "The first book in the A Song of Ice and Fire series, filled with political intrigue", 
+            "9780553593716", 
+            fantasy, 
+            Set.of(author16),
+            "game_of_thrones.jpg");
+        
     }
 
     private Genre createGenreIfNotExists(String name, String description) {
@@ -192,12 +263,12 @@ public class DataInitializer {
             });
     }
 
-    private Author createAuthorIfNotExists(String name, String biography) {
+    private Author createAuthorIfNotExists(String name, String description) {
         return authorRepository.findByName(name)
             .orElseGet(() -> {
                 Author author = new Author();
                 author.setName(name);
-                author.setBiography(biography);
+                author.setDescription(description);
                 return authorRepository.save(author);
             });
     }
