@@ -88,11 +88,6 @@ You can create additional test users by registering through the application:
 For testing purposes, you can use these sample credentials (you'll need to register them first):
 
 **Regular User:**
-- **Email:** `savanirajdeep5@gmail.co/`
-- **Password:** `admin123`
-- **Role:** `ROLE_USER`
-
-**Another Test User:**
 - **Email:** `test@example.com`
 - **Password:** `test123`
 - **Role:** `ROLE_USER`
