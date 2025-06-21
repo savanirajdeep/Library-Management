@@ -32,7 +32,7 @@ const Register = () => {
       } else if (err.response?.data?.error) {
         setError(err.response.data.error);
       } else {
-        setError('Registration failed. Please try again.');
+      setError('Registration failed. Please try again.');
       }
     }
   };
