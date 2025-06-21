@@ -46,7 +46,7 @@ public class BookController {
                 .orElseGet(() -> {
                     Author newAuthor = new Author();
                     newAuthor.setName(authorName);
-                    newAuthor.setBiography("Author biography");
+                    newAuthor.setDescription("Author biography");
                     return authorRepository.save(newAuthor);
                 });
 
@@ -91,7 +91,7 @@ public class BookController {
                 .orElseGet(() -> {
                     Author newAuthor = new Author();
                     newAuthor.setName(authorName);
-                    newAuthor.setBiography("Author biography");
+                    newAuthor.setDescription("Author Description");
                     return authorRepository.save(newAuthor);
                 });
 
